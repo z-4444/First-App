@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<div id='form'>
+  <% if current_user != @article.user %>
+    <h2>Add a comment:</h2>
+    <%= form_with(model: [ @article, @article.comments.build ], local: false) do |form| %>
+        
+      
+        <div id="rateYo" ></div>
+        <p>
+        <%= form.hidden_field :user_id, value: current_user.id%>
+        <%= form.hidden_field :score, id: 'ScoreId', value: "" %><br />
+        
+        </p>
+        <p>
+          <%= form.label :body %><br>
+          <%= form.text_area :body %>
+        </p>
+
+        <p >
+          <%= form.submit %>
+        </p>
+
+    <% end %>
+
+  <% end %>
+</div>
+
+
+<script>
+$(function () {
+ 
+  $("#rateYo").rateYo({
+    starWidth: "30px",
+  })
+  .on("rateyo.set", function (e, data) {
+    var rating= data.rating;
+    document.getElementById("ScoreId").value = rating;
+  });
+});
+</script>
+
+
+
+
+
+
+<%# <script>
+$('form').submit(function() {  
+    var valuesToSubmit = $(this).serialize();
+    $.ajax({
+        type: "POST",
+        url: $(this).attr('action'), //sumbits it to the given url of the form <%= articles_path %>
+        <%# data: valuesToSubmit,
+        dataType: "JSON" // you want a difference between normal and ajax-calls, and json is standard
+    }).success(function(json){
+        console.log("success", json);
+    });
+    return false; // prevents normal behaviour
+});
+</script> %> 

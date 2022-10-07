@@ -1,0 +1,46 @@
+<div id="comme">
+  <div id='comment-<%= comment.id %>'>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Commenter:</th>
+          <th scope="col">Comment:</th>
+          <th scope="col">rating</th>
+          <th scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        
+          <th scope="row">1</th>
+          <td>
+          <% if comment.user != nil %>
+          <%= comment.user.name %>            
+          <% end %>
+          </td>
+          <td><%= comment.body %></td>
+          <td><div id="rateyo-<%= comment.id %>"></div></td>
+          <td><% if (current_user == @article.user || current_user.id == comment.user_id)   %>
+          <p>
+          <%= link_to 'Destroy Comment',[comment.article, comment],
+            method: :delete,data: { confirm: 'Are you sure?' }, remote: true,class: 'commentDelete' %>
+          </p>
+          <% end %></td>
+     
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  
+</div>
+
+<script>
+$(function () {
+ 
+  $("#rateyo-<%= comment.id %>").rateYo({"rating": <%= comment.score %>,readOnly: true});
+ });
+
+</script>

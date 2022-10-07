@@ -1,0 +1,47 @@
+
+
+<h1>All Users</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Image</th>
+    <th>Articles</th>
+    <th>Current Status</th>
+    <th>change Status</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @users.each do |user| %>
+    <tr class="table-info">
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.phone_number %></td>
+      <% if user.profile_pic.present? %>
+        <td> <%= image_tag user.profile_pic.url ,style: "width: 100px; display: block" %> </td>
+      <% end %>
+      
+      <td><%= link_to 'Show', user_path(user) %></td>
+      <td><%= link_to 'edit', edit_user_registration_path %></td>
+      <td><%= link_to 'remove', cancel_user_registration_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= user.status %></td>
+      <td></td>
+
+      <td>
+      <% if current_user.admin? %>
+        <% if user.status == 'active' %>
+          <%= link_to 'pending',change_status_user_path(user)%>  
+        <% else %>
+          <%= link_to 'active',change_status_user_path(user) %>
+        <% end %>
+      <% end %>
+      </td>
+      
+    </tr>
+  <% end %>
+
+
+
+
+<%# change_status_user %>

@@ -1,0 +1,57 @@
+<%= form_with model: @article, local:false do |form| %>
+ 
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_area :title %>
+  </p>
+ 
+  <p>
+    <%= form.label :text %><br>
+    <%= form.cktext_area :text, 
+    :ckeditor => {:language => 'en', :uiColor => '#AADC6E'} %>
+  </p>
+  <p>
+
+  </p>
+ 
+  <div>
+    <% if @article.image.attached? %>
+        <%= image_tag @article.image, style: "width:150px; display: block" %>
+    <% end %>
+    <p>
+       <%= form.label :image %><br>
+       <%= form.file_field :image %>
+    </p>
+  </div>
+  
+
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
+
+
+<%# <script type='text/javascript' charset='UTF-8'>
+  $(document).ready(function(){
+    $('form[data-remote]').bind('ajax:before', function(){
+      for (instance in CKEDITOR.instances){
+        CKEDITOR.instances[instance].updateElement();
+      }
+    });
+  });
+</script> %>

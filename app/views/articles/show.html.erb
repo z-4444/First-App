@@ -1,0 +1,38 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= raw @article.text %>
+</p>
+<p>
+  <strong>Total Comments:</strong>
+  <%= @article.comments.count %>
+</p>
+
+<% if @article.image.attached? %>
+  <p>
+   <strong>Image<strong>
+   <%= image_tag @article.image, style: "width: 500px; display:block" %>
+  </p>
+<% end %>
+ 
+<h2 style="color:black">Comments</h2>
+
+
+<div>
+<%= render @article.comments %>
+</div>
+<div >
+   <%= render 'comments/form' %>
+  </div>
+ <% if current_user == @article.user %>
+
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+  <%= link_to 'Back', articles_path %>
+
+  <%end%>
+
