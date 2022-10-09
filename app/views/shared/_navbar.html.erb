@@ -1,13 +1,13 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent"">
   <div class="container">
-    <a class="navbar-brand" href="/">First App</a>
+    <a class="navbar-brand text-dark" href="/">First App</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-       <li class="nav-item active">
-          <%= link_to 'My Articles', articles_path, class: 'nav-link' %>
+       <li class="nav-item active ">
+          <%= link_to 'My Articles', articles_path, class: 'nav-link text-dark' %>
        </li>
        <li class="nav-item">
-         <%= link_to 'New Articles', new_article_path, class: 'nav-link' %>
+         <%= link_to 'New Articles', new_article_path, class: 'nav-link text-dark' %>
        </li>
        <% if user_signed_in? %>
         <% if current_user.role=='admin' %>
@@ -21,9 +21,9 @@
       <div class="d-flex align-items-center ms-auto ">
         <ul clas="">
           <% if user_signed_in? %>
-            Logged in as <strong><%= current_user.email %></strong>
-            <li><%= link_to 'My profile', current_user, :class => 'btn btn-primary me-3' %> |
-            <%= link_to "Logout", destroy_user_session_path, :class => 'btn btn-primary me-3'  %></li>
+            Logged in  <strong><%= current_user.name %></strong>
+            <%= link_to 'My profile', current_user, :class => 'btn btn-primary me-3' %>
+            <%= link_to "Logout", destroy_user_session_path, :class => 'btn btn-primary me-3'%></li>
           <% else %>
             <li><%= link_to "Sign up", new_user_registration_path, :class => 'btn btn-primary me-3'  %> |
             <%= link_to "Login", new_user_session_path, :class => 'btn btn-primary me-3'  %></li>

@@ -1,22 +1,18 @@
 
-<header>
+<header style="margin-top:-20">
   
   <!-- Background image -->
   <div
     class="p-5 text-center bg-image"
     style="
-      background-image: url('/images/header.jpeg');
+      background-image: url('https://cdn.pixabay.com/photo/2016/04/19/06/57/logo-1338108__340.png');
       height: 300px;
-    "
-  >
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      margin-top:-94px;
+      background-size: cover; "  >
+    <div class="mask" style=".bg-transparent.bg-transparent-color: rgba(0, 0, 0, 0.6);">
       <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Heading</h1>
-          <h4 class="mb-3">Subheading</h4>
-          <a class="btn btn-outline-light btn-lg" href="#!" role="button"
-          >Call to action</a
-          >
+        <div class="text-white" style="margin-top:94px">
+          <%= link_to "Your's Articles", articles_path, class: "btn btn-outline-dark btn-lg border-5", style:"padding:10px 30px" %>
         </div>
       </div>
     </div>
