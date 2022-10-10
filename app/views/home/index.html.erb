@@ -2,7 +2,7 @@
 
 <%# ########################################################################################### %>
 <%= render 'shared/header' %>
-<h1>Listing Articles</h1>
+<h1>Articles</h1>
 <%= link_to 'New article', new_article_path %>
     <% @articles.each do |article| %>
         <% if article.status=='approved' || current_user.role=='admin' %>
