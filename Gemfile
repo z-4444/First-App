@@ -67,11 +67,6 @@ gem 'jquery-datatables-rails'
 
 gem 'bootstrap-sass'
 
-# gem 'rails-assets-jquery', source: 'https://rails-assets.org'
-# gem 'rails-assets-datatables', source: 'https://rails-assets.org'
-
-# gem 'jquery-datatables-rails', '~> 3.4.0'
-# gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-rails'
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
