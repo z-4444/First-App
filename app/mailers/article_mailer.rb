@@ -10,8 +10,8 @@ class ArticleMailer < ApplicationMailer
     @article= article
 
     mail(
-      from: 'ammar.khalid047@gmail.com',
-      to: 'zahid04040@gmail.com',
+      from: 'mzahid04040@gmail.com',
+      to: 'cs.18.b.650@gmail.com',
       # cc: User.all.pluck(:email),
       subject: @article.title
     )
