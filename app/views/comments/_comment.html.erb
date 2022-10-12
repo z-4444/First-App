@@ -10,11 +10,13 @@
                 <p><%= comment.body %></p>
 
                 <div class="d-flex justify-content-between">
-                  <% if comment.user != nil %>
+                  
                     <div class="d-flex flex-row align-items-center">
                       <img src="" alt="" width="25"
                         height="25" />
+                      <% if comment.user != nil %>
                       <p class="small mb-0 ms-2"><%= comment.user.name %></p>
+                      <% end %>
                         <% if comment.score != nil %>
                           <small>
                             <p class="small mb-0 ms-2"><div id="rateyo-<%= comment.id %>"></div></p>
@@ -25,7 +27,6 @@
                             </small>
                         <% end %>
                     </div>
-                  <% end %>
                   <% if (current_user == @article.user || current_user.id == comment.user_id)   %>
                     <div class="d-flex flex-row align-items-center">
                     <p class="small text-muted mb-0" >

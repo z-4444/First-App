@@ -8,4 +8,4 @@
 # User.create!(name: "admin", email: "admin@gmail.com",password: "adminrole",phone_number: 1234567,status: 1, role: 1)
 
 
-AdminUser.create!(email: 'zahid@admin.com', password: 'adminrole', password_confirmation: 'adminrole') if Rails.env.development?
+AdminUser.create!(email: 'zahid@admin.com', password: 'adminrole', password_confirmation: 'adminrole')
