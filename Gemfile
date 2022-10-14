@@ -81,3 +81,5 @@ gem 'rateyo-rails', '~> 2.1', '>= 2.1.1'
 gem 'activeadmin'
 
 gem "letter_opener", group: :development
+
+gem "font-awesome-sass", "~> 6.2.0"

@@ -121,6 +121,8 @@ GEM
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5)
+    font-awesome-sass (6.2.0)
+      sassc (~> 2.0)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
@@ -316,6 +318,7 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   ckeditor!
   devise
+  font-awesome-sass (~> 6.2.0)
   jbuilder (~> 2.7)
   jquery-datatables-rails
   jquery-rails
