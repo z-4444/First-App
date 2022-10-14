@@ -83,3 +83,5 @@ gem 'activeadmin'
 gem "letter_opener", group: :development
 
 gem "font-awesome-sass", "~> 6.2.0"
+
+gem 'dotenv-rails'
