@@ -67,11 +67,6 @@ gem 'jquery-datatables-rails'
 
 gem 'bootstrap-sass'
 
-# gem 'rails-assets-jquery', source: 'https://rails-assets.org'
-# gem 'rails-assets-datatables', source: 'https://rails-assets.org'
-
-# gem 'jquery-datatables-rails', '~> 3.4.0'
-# gem 'jquery-datatables-rails', '~> 3.4.0'
 gem 'jquery-rails'
 
 gem 'ckeditor', github: 'galetahub/ckeditor'
@@ -86,3 +81,7 @@ gem 'rateyo-rails', '~> 2.1', '>= 2.1.1'
 gem 'activeadmin'
 
 gem "letter_opener", group: :development
+
+gem "font-awesome-sass", "~> 6.2.0"
+
+gem 'dotenv-rails'

@@ -12,11 +12,11 @@ class Users::SessionsController < Devise::SessionsController
   def create
     @user = User.find_by_email(sign_in_params[:email])
     # UserMailer.signed_up(user).deliver_later
-    if @user.pending?
+    if @user.active?
+      super
+    else
       flash[:alert]="wait you are in pendding list"
       redirect_to new_user_session_path
-    else
-      super
     end
     # super 
   end

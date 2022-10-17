@@ -1,12 +1,15 @@
-<%# #################################################################################### %>
-
-<%# ########################################################################################### %>
 <%= render 'shared/header' %>
-<h1>Listing Articles</h1>
-<%= link_to 'New article', new_article_path %>
-    <% @articles.each do |article| %>
-        <% if article.status=='approved' || current_user.role=='admin' %>
-        <div class="card mb-3" style="max-width: 540px;">
+<%# #################################################################################### %>
+<h4 class="justify-content-between px-5 py-4">
+<span>Articles<span>
+
+<%= link_to 'New article', new_article_path,class:"btn btn-primary float-end" %>
+
+</h4>
+<%# ########################################################################################### %>
+<% @articles.each do |article| %>
+    <% if article.status=='approved' || current_user.role=='admin' %>
+    <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <% if article.image.attached? %>
@@ -15,38 +18,29 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                <div class='card-title'><%= article.title %></div>
-                <div class='card-text'><%= raw article.text %></div>
-                <div class='card-text'><small class="text-muted"><%= article.status %></small></div>
-                <div class='card-text'><small class="text-muted"><%= article.user.name %></small></div>
+                    <div class='card-title'><%= article.title %></div>
+                    <div class='card-text'><%= raw article.text %></div>
+                    <div class='card-text'><small class="text-muted"><%= article.status %></small></div>
+                    <div class='card-text'><small class="text-muted"><%= article.user.name %></small></div>
+                    
+                    <%= link_to 'Show', article_path(article),class:"btn btn-primary" %>
                 
-                <%= link_to 'Show', article_path(article),class:"btn btn-primary" %>
-               
-                <% if current_user == article.user || current_user.role=='admin' %>
-                <%= link_to 'Edit', edit_article_path(article),class:"btn btn-primary" %>
-            
-                <%= link_to 'Destroy', article_path(article),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
-                <% end %>
-                <% if current_user.admin? %>
-                    <% if article.status == 'approved' %>
-                        <button type="button" class="btn btn-secondary"><%= link_to 'Change to pending', change_status_article_path(article) %></button>                    <% else %>
-                        <button type="button" class="btn btn-secondary"><%= link_to 'Change to Approved', change_status_article_path(article) %></button>
+                    <% if current_user == article.user || current_user.role=='admin' %>
+                    <%= link_to 'Edit', edit_article_path(article),class:"btn btn-primary" %>
+                
+                    <%= link_to 'Destroy', article_path(article),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
                     <% end %>
-                <% end %>
+                    <% if current_user.admin? %>
+                        <% if article.status == 'approved' %>
+                            <button type="button" class="btn btn-secondary"><%= link_to 'Change to pending', change_status_article_path(article) %></button>                    <% else %>
+                            <button type="button" class="btn btn-secondary"><%= link_to 'Change to Approved', change_status_article_path(article) %></button>
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
-         </div>
-         </div>
-        <% end %>
+            </div>
+        </div>
     <% end %>
-
-
-<%# 
-<script>
-      $(document).ready(function() {
-         $("#Article_table").dataTable();
-      });
-</script>  %>
-
+<% end %>
