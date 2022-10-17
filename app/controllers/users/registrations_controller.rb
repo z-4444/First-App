@@ -12,18 +12,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   # @user=User.new
-  #   # @user = User.new(params[:email])
-  #   # if @user.save
-  #   #   UserMailer.signed_up(@user).deliver_now
-  #   # end
-  #   super
-  #   # @user = User.new(user_params)
-  #   # UserMailer.signed_up(@user).deliver_now
-  #   # AdminMailer.new_user_waiting(@user).deliver_now
-  #   # redirect_to new_user_session_path
-  # end
+  def create
+    # @user=User.new
+    # @user = User.new(params[:email])
+
+    super
+    if @user.persisted?
+      UserMailer.signed_up(@user).deliver_later
+      AdminMailer.new_user_waiting(@user).deliver_later
+    end
+
+  end
 
   # # GET /resource/edit
   # def edit
